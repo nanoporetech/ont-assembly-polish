@@ -1,0 +1,14 @@
+image: docker-registry.oxfordnanolabs.local:5000/ont-base-docker:latest 
+
+before_script:
+    - apk update && apk add bash make
+
+stages:
+    - build-image
+
+build-polish-image:
+    stage: build-image
+    script:
+      - cd docker && make build && make push
+    tags:
+        - docker-builder
