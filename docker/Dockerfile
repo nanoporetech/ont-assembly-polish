@@ -37,7 +37,7 @@ WORKDIR /home
 
 # Clone the ont-assembly-polish project:
 ARG CACHEBUST
-RUN DUMMY=${CACHEBUST} GIT_SSL_NO_VERIFY=wizardry git clone https://git.oxfordnanolabs.local/bsipos/ont-assembly-polish.git
+RUN DUMMY=${CACHEBUST} git clone https://github.com/nanoporetech/ont-assembly-polish.git
 
 # Change into the project directory:
 WORKDIR /home/ont-assembly-polish
