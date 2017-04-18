@@ -9,6 +9,6 @@ stages:
 build-polish-image:
     stage: build-image
     script:
-      - cd docker && make build && make push
+      - cd docker && make build
     tags:
         - docker-builder
