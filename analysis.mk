@@ -59,7 +59,7 @@ ifeq ($(USE_PILON),yes)
 	@bwa index $(RACON_CONTIGS)
 	@echo Aligning Illumina reads using BWA mem.
 	@bwa mem -t $(CORES) $(BWA_PARAMETERS) $(RACON_CONTIGS)  $(ILLUMINA_READS_PAIR1) $(ILLUMINA_READS_PAIR2)\
-		| samtools view -S -b -u - | samtools sort - $(BWA_BAM_PREFIX)
+		| samtools view -S -b -u - | samtools sort - -o $(BWA_BAM)
 	@samtools index $(BWA_BAM)
 else
 	@echo Skipping BWA alignment.
