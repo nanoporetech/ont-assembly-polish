@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Botond.Sipos@nanoporetech.com
 
 # Upgrade and install necessary packages:
