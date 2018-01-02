@@ -17,9 +17,9 @@ WORKDIR /opt
 
 # Compile and install canu:
 RUN git clone https://github.com/marbl/canu.git &&\
-    cd canu/src && make -j && cp -r /opt/canu/Linux-amd64/bin/* /usr/local/bin/ && cd - &&\
-    rm -r canu
-
+    cd canu/src && make -j && cd -
+ENV PATH=/opt/canu/Linux-amd64/bin:$PATH
+    
 # Compile and install minimap:
 RUN git clone https://github.com/lh3/minimap && (cd minimap && make) &&\
     cp minimap/minimap /usr/local/bin && rm -r minimap
