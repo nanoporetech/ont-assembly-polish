@@ -40,7 +40,7 @@ racon_correct: $(RACON_CONTIGS)
 $(RACON_CONTIGS): $(NANOPORE_READS) $(CANU_CONTIGS) $(WDIR)/racon
 ifeq ($(USE_RACON),yes)
 	@echo Mapping nanopore reads onto canu contings using minimap.
-	@minimap $(CANU_CONTIGS) $(NANOPORE_READS) > $(MINIMAP_OVERLAPS)
+	@minimap2 -x ava-ont -t $(CORES) $(CANU_CONTIGS) $(NANOPORE_READS) > $(MINIMAP_OVERLAPS)
 	@echo Correcting contigs using racon.
 	@$(WDIR)/racon -t $(CORES) $(NANOPORE_READS) $(MINIMAP_OVERLAPS) $(CANU_CONTIGS) > $(RACON_CONTIGS)
 else

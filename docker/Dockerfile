@@ -21,8 +21,8 @@ RUN git clone https://github.com/marbl/canu.git &&\
 ENV PATH=/opt/canu/Linux-amd64/bin:$PATH
     
 # Compile and install minimap:
-RUN git clone https://github.com/lh3/minimap && (cd minimap && make) &&\
-    cp minimap/minimap /usr/local/bin && rm -r minimap
+RUN git clone https://github.com/lh3/minimap2 && (cd minimap2 && make) &&\
+    cp minimap2/minimap2 /usr/local/bin && rm -r minimap2
 
 # Compile and install miniasm:
 RUN git clone https://github.com/lh3/miniasm && (cd miniasm && make) &&\
