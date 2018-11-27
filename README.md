@@ -1,5 +1,12 @@
+![ONT_logo](/ONT_logo.png)
+--------------------------
+
 ONT assembly and Illumina polishing pipeline
 =============================================
+
+1\. Introduction:
+-----------------
+
 
 This pipeline performs the following steps:
 - Assembly of nanopore reads using [Canu](http://canu.readthedocs.io).
@@ -7,8 +14,21 @@ This pipeline performs the following steps:
 - Map a paired-end Illumina dataset onto the contigs obtained in the previous steps using [BWA](http://bio-bwa.sourceforge.net) mem.
 - Perform correction of contigs using [pilon](https://github.com/broadinstitute/pilon/wiki) and the Illumina dataset.
 
-Usage
------
+2\. Getting Started:
+--------------------
+
+## Dependencies:
+
+- [Canu](http://canu.readthedocs.io)
+- [samtools](http://www.htslib.org/)
+- [BWA](http://bio-bwa.sourceforge.net)
+- [cmake](https://cmake.org/)
+- [racon](https://github.com/isovic/racon) - the pipeline will download and build it
+- [minimap2](https://github.com/lh3/minimap2) and [miniasm](https://github.com/lh3/miniasm)
+- [pilon](https://github.com/broadinstitute/pilon/wiki) - the pipeline will download it
+
+
+## Usage:
 
 Edit `config.mk` to set input files and parameters. Specifying the following is mandatory:
 - `NANOPORE_READS` - input nanopore reads (note that this **must** be a single valid fastq file, see [here](https://www.biostars.org/p/81924/) how to combine fastq files).
@@ -22,8 +42,7 @@ Racon corrections can be disabled by setting `USE_RACON=no`. Pilon polishing can
 
 Then issue issue `make all` to run the pipeline. Issue `make help` for a list of utility make targets. Issue `make clear_wdir` to delete the working directory (including all results!).
 
-Using through docker
---------------------
+## Using through docker:
 
 The easiest way to use the pipeline is through docker. First [install docker](https://docs.docker.com/engine/installation/), then issue the following to build the
 container:
@@ -41,19 +60,10 @@ docker run -v /path/to/my_data:/data -it ont-assembly-polish
 You will be dropped into the directory `/home/ont-assembly-polish`, then simply edit `config.mk` and run the pipeline.
 The `-v` flag will make the `/path/to/my_data` directory on the host available under `/data` in the container.
 
-Application dependencies
-------------------------
+3\. Results:
+------------
 
-- [Canu](http://canu.readthedocs.io)
-- [samtools](http://www.htslib.org/)
-- [BWA](http://bio-bwa.sourceforge.net)
-- [cmake](https://cmake.org/)
-- [racon](https://github.com/isovic/racon) - the pipeline will download and build it
-- [minimap2](https://github.com/lh3/minimap2) and [miniasm](https://github.com/lh3/miniasm)
-- [pilon](https://github.com/broadinstitute/pilon/wiki) - the pipeline will download it
-
-Evaluation on simulated data
-----------------------------
+## Evaluation on simulated data:
 
 In order to evaluate the performance of the pipeline we have simulated long and short reads from the yeast genome and measured the accuracy of recovered contigs
 after various stages of correction.
@@ -79,12 +89,13 @@ We have measured the accuracy of recovered contigs after various correction stag
 - Both dnadiff and lastal accuracies suggest that racon and pilon polishing increases contig accuracy.
 - Lastal accuracies suggest that the effect of racon and pilon polishing is additive, though the increase in accuracy is not substantial.
 
-License
--------
+4\. Help:
+---------
+
+## Licence and Copyright:
 
 (c) 2016 Oxford Nanopore Technologies Ltd.
 
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
