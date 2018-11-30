@@ -14,6 +14,8 @@ This pipeline performs the following steps:
 - Map a paired-end Illumina dataset onto the contigs obtained in the previous steps using [BWA](http://bio-bwa.sourceforge.net) mem.
 - Perform correction of contigs using [pilon](https://github.com/broadinstitute/pilon/wiki) and the Illumina dataset.
 
+If you only have nanopore reads consider using the [katuali](https://github.com/nanoporetech/katuali) pipeline for assembly and polishing.
+
 2\. Getting Started:
 --------------------
 
