@@ -4,7 +4,7 @@ MAINTAINER Botond.Sipos@nanoporetech.com
 # Upgrade and install necessary packages:
 RUN apt-get update && apt-get upgrade -y &&\
     apt-get install -y sudo git make build-essential mummer last-align python-numpy python-matplotlib time bwa samtools software-properties-common gnuplot\
-    zlib1g-dev mc wget libatlas-base-dev python-pip python-pandas
+    zlib1g-dev mc wget libatlas-base-dev python-pip python-pandas cmake
 
 # Install latest Java:
 RUN add-apt-repository ppa:webupd8team/java &&\
