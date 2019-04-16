@@ -2,15 +2,15 @@ FROM ubuntu:18.04
 MAINTAINER Botond.Sipos@nanoporetech.com
 
 # Upgrade and install necessary packages:
-RUN apt-get update && apt-get upgrade -y &&\
-    apt-get install -y sudo git make build-essential mummer last-align python-numpy python-matplotlib time bwa samtools software-properties-common gnuplot\
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y &&\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git make build-essential mummer last-align python-numpy python-matplotlib time bwa samtools software-properties-common gnuplot\
     zlib1g-dev mc wget libatlas-base-dev python-pip python-pandas cmake
 
 # Install latest Java:
 RUN add-apt-repository ppa:webupd8team/java &&\
     apt-get update &&\
     (echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections) &&\
-     apt-get install -y oracle-java8-installer
+     DEBIAN_FRONTEND=noninteractive apt-get install -y oracle-java8-installer
 
 # Start working in /opt
 WORKDIR /opt
