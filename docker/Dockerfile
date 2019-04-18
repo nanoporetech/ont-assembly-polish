@@ -4,19 +4,7 @@ MAINTAINER Botond.Sipos@nanoporetech.com
 # Upgrade and install necessary packages:
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y &&\
     DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git make build-essential mummer last-align python-numpy python-matplotlib time bwa samtools software-properties-common gnuplot\
-    zlib1g-dev mc wget libatlas-base-dev python-pip python-pandas cmake
-
-# Install latest Java:
-RUN add-apt-repository ppa:webupd8team/java &&\
-    apt-get update &&\
-    cd /var/lib/dpkg/info &&\
-    sudo sed -i 's|JAVA_VERSION=8u201|JAVA_VERSION=8u211|' oracle-java8-installer.* &&\
-    sudo sed -i 's|PARTNER_URL=http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/|PARTNER_URL=https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/|' oracle-java8-installer.* &&\
-    sudo sed -i 's|SHA256SUM_TGZ="cb700cc0ac3ddc728a567c350881ce7e25118eaf7ca97ca9705d4580c506e370"|SHA256SUM_TGZ="c0b7e45330c3f79750c89de6ee0d949ed4af946849592154874d22abc9c4668d"|' oracle-java8-installer.* &&\
-    sudo sed -i 's|J_DIR=jdk1.8.0_201|J_DIR=jdk1.8.0_211|' oracle-java8-installer.* &&\
-    cd &&\
-    (echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections) &&\
-     DEBIAN_FRONTEND=noninteractive apt-get install -y oracle-java8-installer
+    zlib1g-dev mc wget libatlas-base-dev python-pip python-pandas cmake default-jre
 
 # Start working in /opt
 WORKDIR /opt
