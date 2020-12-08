@@ -1,6 +1,8 @@
 ![ONT_logo](/ONT_logo.png)
 --------------------------
 
+This repository is now unsupported and we do not recommend its use. Please contact Oxford Nanopore: support@nanoporetech.com for help with your application.
+
 ONT assembly and Illumina polishing pipeline
 =============================================
 
